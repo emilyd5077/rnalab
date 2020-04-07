@@ -1,0 +1,20 @@
+---
+title: "Brief feedback"
+output:
+     html_document
+---
+
+Some feedback on your project, necessarily brief because of the class
+size. 
+
+## Comments
+
+Your package has a few problems, but not major ones.
+
+1. Your report has a long listing of a dataset; you should summarize
+   better. Otherwise, your report is good enough.
+2. Your partitioning of tasks is also good.
+3. Your shiny app is not usable by a general user. Unless one knows
+   what one is looking for, it is hard to make the choices and run an
+   example. The tabs could have been designed to provide some help
+   here, including example settings to run a full example.

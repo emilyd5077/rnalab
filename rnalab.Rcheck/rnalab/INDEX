@@ -1,0 +1,14 @@
+add_gc_content          Adding the GC content
+add_mono_nucleotide_length
+                        Adding longest mono nucleotide length
+add_sequence_length     Add a column to the existing dataframe
+available_seq_prop      Internal function to check which properties
+                        users have chosen
+dnaseqs                 Sample DNA Sequence Data
+filter_seq              Internal function to filter the data
+remove_added_columns    remove_added_columns
+rename_column           Rename the columns to the usable names for the
+                        internal functions
+rnalab_hist_plot        Plot Histograms for input data
+rnalab_scatterplot      Plot Scatterplots for input data
+runRNAapp               Run the rnalab Shiny App

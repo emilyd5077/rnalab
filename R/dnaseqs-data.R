@@ -1,0 +1,31 @@
+#' Sample DNA Sequence Data
+#'
+#' Sample data set of 500 human cDNA sequences from the Ensembl genome browser.
+#' This data set represents an example output of manufacturing data from a biotech
+#' company (e.g. if this company were manufacturing these DNA sequences for research
+#' or therapeutic purposes). Manufacturing information (e.g. date, yield, purity, impurity1)
+#' was generated as toy values for the purposes of demonstrating the utility of the rnalab package.
+#'
+#' @docType data
+#'
+#' @usage data(dnaseqs)
+#'
+#' @format A data frame with 500 observations of 8 variables. \cr
+#' [,1] ensembl_id \cr
+#' [,2] gene_symbol \cr
+#' [,3] length \cr
+#' [,4] sequence \cr
+#' [,5] date \cr
+#' [,6] yield \cr
+#' [,7] purity \cr
+#' [,8] impurity1
+#'
+#' @keywords datasets
+#'
+#' @source \href{ftp://ftp.ensembl.org/pub/release-99/fasta/homo_sapiens/cdna/}{Ensembl H. sapiens cDNA}
+#'
+#' @examples
+#' data(dnaseqs)
+#' rnalab::rnalab_hist_plot(data = dnaseqs, vars = list('length', 'yield'), nbins = 100)
+#' rnalab::rnalab_scatterplot(data = dnaseqs, x = 'length', y = 'yield', fit=TRUE)
+"dnaseqs"

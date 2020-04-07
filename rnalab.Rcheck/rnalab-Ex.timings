@@ -1,0 +1,7 @@
+name	user	system	elapsed
+add_gc_content	1.81	0.08	1.89	
+add_mono_nucleotide_length	0	0	0	
+add_sequence_length	0	0	0	
+dnaseqs	0.68	0.08	0.75	
+rnalab_hist_plot	0.50	0.02	0.54	
+rnalab_scatterplot	0.25	0.00	0.25	

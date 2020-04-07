@@ -1,0 +1,100 @@
+---
+title: "Introduction to rnalab"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{rnalab_introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(rnalab)
+```
+
+# Purpose of the rnalab package
+
+The purpose of the `rnalab` package is to provide user-friendly tools for biotechnology companies who manufacture DNA or RNA for use as therapeutic agents (e.g. for gene therapy applications in personalized medicine). For these companies, it is useful to be able to track various properties of the nucleic acid sequences and to explore possible relationships between these properties and metrics associated with manufacturing. Biotech users who may not be familiar with interacting with data directly through R can visualize and interact with their nucleic acid data via the R Shiny application included in this package. For added flexibility for users who have some familiarity with R, the functions included in this package simplify plotting and feature engineering for nucleic acid data.
+
+
+# Example use cases
+
+## Perform feature engineering on input sequences
+
+Feature engineering of DNA or RNA sequences is helpful to generate additional sequence properties to explore using the `rnalab` package. For example, longest mononucleotide length (i.e. the longest stretch of a single nucleotide present in a sequence) could be a useful feature, but may not be commonly calculated for sequence manufacturing metrics tracking. The `rnalab` package Shiny App allows users to add such features to their data sets, requiring users to map which column in the input data corresponds to the nucleic acid sequence.
+
+Feature engineering provided by the package includes the following features:
+
+* GC-Content
+* Longest mononucleotide length (i.e. longest stretch of poly-A, poly-G, poly-C, and poly-T sequences)
+* Sequence length
+
+As the sample data set already includes a length attribute for all sequences, the following shows examples for adding the GC-content and mononucleotide length features to `dnaseqs`:
+
+```{r}
+## GC Content ##
+add_gc_content(dnaseqs,'sequence')
+
+## Longest mononucleotide stretch ##
+add_mono_nucleotide_length(dnaseqs,'sequence')
+
+## Length of the sequence ##
+add_sequence_length(dnaseqs,'sequence')
+```
+
+
+## Look at summary statistics for nucleotide sequences
+
+In biopharmaceutical manufacturing of individualized therapies, a single manufacturing process is used to produce all unique input sequences. Because of this, it is useful to know the distribution and summary statistics for the sequences that are input into the manufacturing process. Likewise, knowing the distribution of outputs from the manufacturing process is also useful to visualize. The R Shiny app, as well as the `rnalab_hist_plot` function allow for easy plotting of histograms and display of summary statistics for input variables.
+
+```{r fig.height=10, fig.width=10}
+rnalab_hist_plot(dnaseqs, c('length', 'yield'), 100)
+```
+
+
+## Explore relationships between nucleotide sequence properties and manufacturing outputs
+
+Because each product manufactured for an individualized therapy is unique, it is useful to be able to explore possible relationships between input sequence properties and output manufacturing metrics. For this package, users can generate scatterplots and optionally add a linear regression line. In some cases, plotting a linear regression may not be as useful (e.g. when looking at the value of a metric over time, such as plotting purity vs. date of manufacture).
+
+```{r fig.height=5, fig.width=10}
+rnalab_scatterplot(dnaseqs, x = 'length', y = 'yield', fit = TRUE)
+
+rnalab_scatterplot(dnaseqs, x = 'date', y = 'purity', fit = FALSE)
+```
+
+## Use the R Shiny app to do all of the above in an interactive environment
+
+```{r eval=FALSE}
+
+runRNAapp()
+
+```
+
+
+## Future Enhancements:
+
+- Currenlty, users have the option to calculate the Sequence Properties by selecting the sequence column. Also an option to map the existing properties to analyse the sequence.
+
+In future, we would like to add more edge cases in "Map the existing properties". 
+
+# Contributions of team members
+
+Emily:
+
+* Generated sample data, available as `dnaseqs` in the `rnalab` package
+* Wrote the `rnalab_hist_plot` and `rna_scatterplot` functions and documentation
+* Set up the tab and panel structure for the Shiny app
+* Set up the Upload Data, Histograms / Summary Stats, and Scatterplots sections of the Shiny app
+
+Akshita:
+
+* Set up the initial package structure in the repository
+* Wrote the feature engineering functions and documentation in the `feature_engineering.R` file
+* Set up the structure for the Analyse Sequence section of the Shiny app
+* Set up `testthat.R` for package testing
