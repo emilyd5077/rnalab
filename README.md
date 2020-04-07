@@ -1,3 +1,3 @@
 # rnalab
 
-Repo for Emily Dong and Akshita Batra. Your R package will be `rnalab`.
+`rnalab` is an R package for nucleic acid sequence analysis that includes a Shiny tool for user friendly interacton.
